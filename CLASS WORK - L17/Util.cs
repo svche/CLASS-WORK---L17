@@ -242,8 +242,19 @@ namespace Util
                             printAllInformationItem(workList);
                             break;
                         }
-                    
-                      
+                    case "3.1":
+                        {
+                            SortWork.sortByModel(workList);
+                            PrintWork.printAll(workList);
+                            break;
+                        }
+                    case "6":
+                        {
+                            workList.Add(addNewItem());
+                            break;
+                        }
+
+
                 }
             } while (flag);
             
@@ -292,6 +303,34 @@ Make choise:
             }
         }
          
+        private Transport addNewItem()
+        {
+            Console.WriteLine("Chose your transport: ");
+            Console.WriteLine("1.Car");
+
+            Transport transport = null;
+            string choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    {
+                        transport = addCar();
+                        break;
+                    }
+            }
+            return transport;
+        }
+
+        private Car addCar()
+        {
+            Car car = new Car();
+            Console.WriteLine("Enter speed: ");
+            car.Speed = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter transmission: ");
+            car.Transmission = Console.ReadLine();
+            car.Engine = new DieselEngine();
+            return car;
+        }
     }
 
 }
